@@ -6,6 +6,10 @@ This is my personal cheat sheet, i didn't commented this very well because my in
 ![alt text](https://github.com/lucasfrosty/rxjs-cheatsheet/raw/master/stream.png "Stream img")
 
 # The observer
+Inside the subscribe parameter we put 3 methods:
+- next: the event call, the value param passed is the data passed by the function **someRxEvent.next(value);**
+- error: when a event emit an error
+- complete: this will be called when we want to end the event stream calling **someRxEvent.complete();**
 ```js
 Rx.Observable
   .fromEvent(btn, 'click')
