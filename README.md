@@ -6,13 +6,22 @@ This is my personal cheat sheet, i didn't commented this very well because my in
 # Commands
 
 ### sampleTime
+will get the MOST RECENTLY emitted value within the time interval set as parameter
 ```js
-const btn = document.querySelector('button');
-
-// will get the MOST RECENTLY emitted value within the time interval set as parameter
 Rx.Observable
   .fromEvent(btn, 'click')
   .sampleTime(5000)
+  .subscribe(
+    () => console.log('clicked')
+   );
+```
+
+### throttleTime
+emits the value, then ignore all other values passed by within the time interval set as parameter
+```js
+Rx.Observable
+  .fromEvent(btn, 'click')
+  .throttleTime(5000)
   .subscribe(
     () => console.log('clicked')
    );
