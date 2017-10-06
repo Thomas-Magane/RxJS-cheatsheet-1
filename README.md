@@ -27,7 +27,19 @@ Rx.Observable
   );
 ```
 
-# Commands
+# Operators
+
+### map
+just to get the data and do something with it, very alike the **Promise.then(data => doSomethingWith(data))**
+```js
+Rx.Observable
+  .fromEvent(btn, 'click')
+  .sampleTime(100)
+  .map(event => event.clientX) // transform the event into event.clientX for the next action called
+  .subscribe(
+    (coordX) => console.log(coordX)
+   );
+```
 
 ### sampleTime
 will get the **most recent** emitted value within the time interval set as parameter
@@ -56,7 +68,7 @@ it's like a delay, and only dispatch the last event emitted
 ```js
 Rx.Observable
   .fromEvent(btn, 'click')
-  .debounceTime(5000)
+  .debounceTime(100)
   .subscribe(
     () => console.log('clicked')
    );
