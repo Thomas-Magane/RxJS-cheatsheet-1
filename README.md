@@ -80,13 +80,14 @@ will kinda call the 'next' function every period time setted in the interval par
 // the 'next' function will be called every 1s, but after 5s the value will be 5, so the observable will be unsubscribed
 const observable = Rx.Observable
   .interval(1000)
+  .map(second => second * 1000)
   .subscribe(
-    value => {
-      if(value === 5) {
+    ms => {
+      if(ms >= 5000) {
         observable.unsubscribe();
       }
 
-      console.log(value);
+      console.log(`${ms}ms passed`);
     }
   );
 ```
