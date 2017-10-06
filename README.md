@@ -73,3 +73,21 @@ Rx.Observable
     () => console.log('clicked')
    );
 ```
+
+### interval
+will kinda call the 'next' function every period time setted in the interval param, and it's value will be increased by 1 every time the call is made
+```js
+// the 'next' function will be called every 1s, but after 5s the value will be 5, so the observable will be unsubscribed
+const observable = Rx.Observable
+  .interval(1000)
+  .subscribe(
+    value => {
+      if(value === 5) {
+        observable.unsubscribe();
+      }
+
+      console.log(value);
+    }
+  );
+```
+
