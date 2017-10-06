@@ -5,6 +5,23 @@ This is my personal cheat sheet, i didn't commented this very well because my in
 # The Stream
 ![alt text](https://github.com/lucasfrosty/rxjs-cheatsheet/raw/master/stream.png "Stream img")
 
+# The observer
+```js
+Rx.Observable
+  .fromEvent(btn, 'click')
+  .sampleTime(100)
+  .subscribe(
+    (value) => {
+      console.log('My event: ', value.clientX);
+    },
+    (err) => {
+      console.log('Error:', err);
+    },
+    () => {
+      console.log('Event was completed!!');
+    }
+  );
+```
 
 # Commands
 
@@ -13,7 +30,7 @@ will get the **most recent** emitted value within the time interval set as param
 ```js
 Rx.Observable
   .fromEvent(btn, 'click')
-  .sampleTime(5000)
+  .sampleTime(100)
   .subscribe(
     () => console.log('clicked')
    );
@@ -24,7 +41,7 @@ emits the value, then ignore all other values passed by within the time interval
 ```js
 Rx.Observable
   .fromEvent(btn, 'click')
-  .throttleTime(5000)
+  .throttleTime(100)
   .subscribe(
     () => console.log('clicked')
    );
